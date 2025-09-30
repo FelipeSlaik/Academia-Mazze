@@ -1,7 +1,7 @@
 function Button({ text, color }) {
   const colors = {
-    "teal-black": "bg-teal-700 hover:bg-teal-600 text-white hover:text-zinc-900",
-    teal: "bg-teal-600 hover:bg-teal-700 hover:text-white text-black",
+    "teal-black": "bg-red-700 hover:bg-red-600 text-white hover:text-black",
+    teal: "bg-red-700 hover:bg-red-600  text-white hover:text-black",
   };
 
 
