@@ -1,10 +1,9 @@
 import Button from "../../views/Button";
 function Cabecalho() {
   return (
-    <header className="flex justify-between items-center px-10 py-4 pt-2 shadow-md  ">
+    <header className="flex justify-between items-center px-10 py-4 pt-2 shadow-md backdrop-opacity-85">
       <a href="#" className="text-4xl font-bold text-sky-700">
-        Academia <br />
-        da Mazze
+        <img src="../src/assets/logo.png" alt="Logo Academia da Mazze" className="w-24 h-24 rounded-3xl "/>
       </a>
       <nav>
         <ul className="flex gap-12 text-2xl font-medium">
