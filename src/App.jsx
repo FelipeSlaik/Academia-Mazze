@@ -1,6 +1,7 @@
 import "@fontsource/barlow-condensed";
 import Cabecalho from "./Components/Shared/Cabecalho.jsx";
 import Home from "./views/Home.jsx";
+import Features from "./views/Features.jsx";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <div className="relative z-10">
         <Cabecalho />
         <Home />
+        <Features />
       </div>
     </div>
   );
