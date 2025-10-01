@@ -4,8 +4,10 @@ import Home from "./views/Home.jsx";
 
 function App() {
   return (
-    <div>
-      <div className="bg-[url('./assets/home-bg.png')] h-screen bg-no-repeat bg-cover bg-center bg-fixed">
+    <div className="relative min-h-screen bg-[url('./assets/home-bg.png')] bg-cover bg-center bg-fixed">
+      <div className="absolute inset-0 bg-black/75"></div>
+
+      <div className="relative z-10">
         <Cabecalho />
         <Home />
       </div>
