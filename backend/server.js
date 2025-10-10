@@ -15,14 +15,12 @@ const PORT = 5000;
 app.use(cors());
 app.use(bodyParser.json());
 
-// 🔒 Garante que o arquivo exista
 function ensureFileExists() {
   if (!fs.existsSync(FILE_PATH)) {
     fs.writeFileSync(FILE_PATH, "[]", "utf-8");
   }
 }
 
-// 🔹 GET – listar avaliações
 app.get("/api/reviews", (req, res) => {
   ensureFileExists();
   fs.readFile(FILE_PATH, (err, data) => {
@@ -36,7 +34,6 @@ app.get("/api/reviews", (req, res) => {
   });
 });
 
-// 🔹 POST – criar nova avaliação
 app.post("/api/reviews", (req, res) => {
   const { name, comment, rating } = req.body;
   if (!name || !comment || !rating)
@@ -70,7 +67,6 @@ app.post("/api/reviews", (req, res) => {
   });
 });
 
-// 🧩 PUT – editar avaliação existente
 app.put("/api/reviews/:id", (req, res) => {
   const reviewId = parseInt(req.params.id);
   const { name, comment, rating } = req.body;
@@ -99,7 +95,6 @@ app.put("/api/reviews/:id", (req, res) => {
   });
 });
 
-// 🗑️ DELETE – remover avaliação
 app.delete("/api/reviews/:id", (req, res) => {
   const reviewId = parseInt(req.params.id);
 
