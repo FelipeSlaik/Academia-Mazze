@@ -84,12 +84,14 @@ app.put("/api/reviews/:id", (req, res) => {
     }
 
     const index = reviews.findIndex((r) => Number(r.id) === reviewId);
-    if (index === -1) return res.status(404).json({ error: "Review não encontrado" });
+    if (index === -1)
+      return res.status(404).json({ error: "Review não encontrado" });
 
     reviews[index] = { ...reviews[index], name, comment, rating };
 
     fs.writeFile(FILE_PATH, JSON.stringify(reviews, null, 2), (err) => {
-      if (err) return res.status(500).json({ error: "Erro ao atualizar review" });
+      if (err)
+        return res.status(500).json({ error: "Erro ao atualizar review" });
       res.json(reviews[index]);
     });
   });
@@ -111,7 +113,6 @@ app.delete("/api/reviews/:id", (req, res) => {
     }
 
     const filtered = reviews.filter((r) => Number(r.id) !== reviewId);
-
 
     if (filtered.length === reviews.length)
       return res.status(404).json({ error: "Review não encontrado" });
