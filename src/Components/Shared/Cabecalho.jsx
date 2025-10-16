@@ -26,7 +26,10 @@ function Cabecalho() {
         </a>
       </nav>
 
-      <Button text="Agende!" color="teal-black" />
+      <Button text="Agende!" 
+      color="teal-black"
+       href="https://wa.me/5511985145797?text=Olá!%20Quero%20agendar%20uma%20aula%20%20na%20Academia%20Mazze."
+      />
     </header>
   );
 }

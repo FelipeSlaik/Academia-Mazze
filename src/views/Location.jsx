@@ -48,7 +48,8 @@ function Location() {
               mesmo.
             </p>
             <a
-              href="#contato"
+              href="https://wa.me/5511985145797?text=Olá!%20Quero%20me%20matricular%20na%20Academia%20Mazze." 
+              target="_blank"
               className="inline-block bg-white text-red-600 font-semibold px-8 py-3 rounded-lg hover:bg-red-100 transition"
             >
               Quero Agendar Agora

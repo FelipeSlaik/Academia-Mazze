@@ -13,8 +13,14 @@ function Home() {
       </h1>
 
       <div className="flex gap-6">
-        <Button text="Matricule-se!" color="teal" />
-        <Button text="Faça uma aula avulsa!" color="teal-black" />
+        <Button text="Matricule-se!" 
+        color="teal" 
+         href="https://wa.me/5511985145797?text=Olá!%20Quero%20me%20matricular%20na%20Academia%20Mazze."
+        />
+        <Button text="Faça uma aula avulsa!" 
+        color="teal-black" 
+         href="https://wa.me/5511985145797?text=Olá!%20Quero%20fazer%20uma%20aula%20avulsa%20na%20Academia%20Mazze."
+        />
       </div>
     </div>
   );
