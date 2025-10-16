@@ -1,4 +1,5 @@
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
+import logo from "../assets/logo.png";
 
 function Footer() {
   return (
@@ -7,7 +8,7 @@ function Footer() {
         
         <div className="flex flex-col items-center md:items-start text-center md:text-left">
           <img
-            src="../src/assets/logo.png"
+            src={logo}
             alt="Academia da Mazze"
             className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl mb-4 bg-sky-50"
           />

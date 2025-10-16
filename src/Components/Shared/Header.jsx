@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Button from "../../views/Button";
 import { HiMenu, HiX } from "react-icons/hi";
+import logo from "../assets/logo.png";
+
 
 function Cabecalho({ scrollToHome, scrollToFeatures, scrollToLocation }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -8,21 +10,20 @@ function Cabecalho({ scrollToHome, scrollToFeatures, scrollToLocation }) {
   return (
     <header className="w-full z-20 px-6 py-4 flex flex-col md:flex-row justify-between items-center bg-transparent">
       
-      {/* Top bar: logo + hamburger/menu desktop */}
       <div className="w-full flex justify-between items-center">
-        {/* Logo */}
+        
         <a
           href="#"
           className="flex items-center text-4xl font-bold bg-sky-50 rounded-2xl"
         >
           <img
-            src="../src/assets/logo.png"
+            src={logo}
             alt="Logo Academia da Mazze"
             className="w-20 h-20 rounded-3xl"
           />
         </a>
 
-        {/* Menu desktop */}
+
         <nav className="hidden md:flex gap-8 text-2xl font-medium text-red-600">
           <button onClick={scrollToHome} className="hover:text-red-700 font-bold">
             Home
