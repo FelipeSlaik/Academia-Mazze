@@ -3,6 +3,7 @@ import Cabecalho from "./Components/Shared/Cabecalho.jsx";
 import Home from "./views/Home.jsx";
 import Features from "./views/Features.jsx";
 import Reviews from "./views/Reviews.jsx";
+import Location from "./views/Location.jsx";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       </div>
     </div>
         <Reviews />
+        <Location />
     </div>
   );
 }
