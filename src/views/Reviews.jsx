@@ -76,119 +76,118 @@ function Reviews() {
   };
 
   return (
-    <section className="bg-[#0f0f0f] text-white py-16 px-6">
-      <div className="max-w-3xl mx-auto text-center">
-        <h2 className="text-3xl font-extrabold mb-6 text-red-500 uppercase tracking-wide">
-          💬 Avaliações da Academia
-        </h2>
-        <p className="text-gray-400 mb-10">
-          Veja o que nossos alunos estão dizendo e compartilhe sua experiência!
-        </p>
+    <section className="bg-[#0f0f0f] text-white py-16 px-4 sm:px-6">
+  <div className="max-w-3xl mx-auto text-center">
+    <h2 className="text-2xl sm:text-3xl md:text-3xl font-extrabold mb-6 text-red-500 uppercase tracking-wide">
+      💬 Avaliações da Academia
+    </h2>
+    <p className="text-gray-400 mb-8 sm:mb-10 text-base sm:text-lg">
+      Veja o que nossos alunos estão dizendo e compartilhe sua experiência!
+    </p>
 
-        <form
-          onSubmit={handleSubmit}
-          className="bg-[#1a1a1a] p-6 rounded-xl shadow-lg border border-red-600/30 mb-10"
+    <form className="bg-[#1a1a1a] p-4 sm:p-6 rounded-xl shadow-lg border border-red-600/30 mb-6 sm:mb-10">
+      <div className="flex justify-center mb-4 gap-1 sm:gap-2">
+        {[1, 2, 3, 4, 5].map((value) => (
+          <button
+            key={value}
+            type="button"
+            onClick={() => setRating(value)}
+            className={`text-2xl sm:text-3xl transition-transform transform hover:cursor-pointer hover:scale-110 ${
+              value <= rating ? "text-red-500" : "text-gray-600"
+            }`}
+          >
+            ★
+          </button>
+        ))}
+      </div>
+
+      <input
+        type="text"
+        placeholder="Seu nome"
+        className="w-full p-3 mb-4 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+
+      <textarea
+        placeholder="Escreva seu comentário..."
+        className="w-full p-3 mb-4 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500"
+        rows="3"
+        value={comment}
+        onChange={(e) => setComment(e.target.value)}
+      />
+
+      <div className="flex flex-col sm:flex-row justify-center gap-4">
+        <button
+          type="submit"
+          className="bg-red-600 text-white font-semibold px-6 py-2 rounded-full hover:bg-red-500 transition-all shadow-md hover:shadow-red-500/30 hover:cursor-pointer"
         >
-          <div className="flex justify-center mb-4">
-            {[1, 2, 3, 4, 5].map((value) => (
-              <button
-                key={value}
-                type="button"
-                onClick={() => setRating(value)}
-                className={`text-3xl transition-transform transform hover:cursor-pointer hover:scale-110 ${
-                  value <= rating ? "text-red-500" : "text-gray-600"
-                }`}
-              >
-                ★
-              </button>
-            ))}
-          </div>
+          {editingId ? "💾 Salvar Alterações" : "🏋️ Enviar Avaliação"}
+        </button>
 
-          <input
-            type="text"
-            placeholder="Seu nome"
-            className="w-full p-3 mb-4 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-
-          <textarea
-            placeholder="Escreva seu comentário..."
-            className="w-full p-3 mb-4 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500"
-            rows="3"
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-          />
-
-          <div className="flex justify-center gap-4">
-            <button
-              type="submit"
-              className="bg-red-600 text-white font-semibold px-6 py-2 rounded-full hover:bg-red-500 transition-all shadow-md hover:shadow-red-500/30 hover:cursor-pointer"
-            >
-              {editingId ? "💾 Salvar Alterações" : "🏋️ Enviar Avaliação"}
-            </button>
-
-            {editingId && (
-              <button
-                type="button"
-                onClick={() => {
-                  setEditingId(null);
-                  setName("");
-                  setComment("");
-                  setRating(0);
-                }}
-                className="bg-gray-600 text-white font-semibold px-6 py-2 rounded-full hover:bg-gray-500 transition-all hover:cursor-pointer"
-              >
-                Cancelar
-              </button>
-            )}
-          </div>
-        </form>
-
-        {loading ? (
-          <p>Carregando avaliações...</p>
-        ) : reviews.length === 0 ? (
-          <p className="text-gray-400">
-            Nenhuma avaliação ainda. Seja o primeiro a mostrar sua força! 💪
-          </p>
-        ) : (
-          <div className="space-y-6">
-            {reviews.map((r) => (
-              <div
-                key={r.id}
-                className="bg-[#1a1a1a] p-5 rounded-xl text-left shadow-md border border-red-600/30 hover:border-red-500/60 transition"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-semibold text-red-400">{r.name}</h3>
-                  <div className="text-red-500 ">
-                    {"★".repeat(r.rating)}{" "}
-                    <span className="text-gray-700">
-                      {"★".repeat(5 - r.rating)}
-                    </span>
-                  </div>
-                </div>
-                <p className="text-gray-300 mb-3">{r.comment}</p>
-
-                <div className="flex gap-3">
-                  <button type="button"
-                    onClick={() => handleEdit(r)}
-                    className="text-sm text-blue-400 hover:text-blue-300 transition hover:cursor-pointer"
-                  >
-                    ✏️ Editar
-                  </button>
-                  <button
-                    onClick={() => handleDelete(r.id)}
-                    className="text-sm text-red-400 hover:text-red-300 transition hover:cursor-pointer"
-                  >
-                    🗑️ Excluir
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
+        {editingId && (
+          <button
+            type="button"
+            onClick={() => {
+              setEditingId(null);
+              setName("");
+              setComment("");
+              setRating(0);
+            }}
+            className="bg-gray-600 text-white font-semibold px-6 py-2 rounded-full hover:bg-gray-500 transition-all hover:cursor-pointer"
+          >
+            Cancelar
+          </button>
         )}
       </div>
-    </section>
+    </form>
+
+    {loading ? (
+      <p>Carregando avaliações...</p>
+    ) : reviews.length === 0 ? (
+      <p className="text-gray-400 text-base sm:text-lg">
+        Nenhuma avaliação ainda. Seja o primeiro a mostrar sua força! 💪
+      </p>
+    ) : (
+      <div className="space-y-4 sm:space-y-6">
+        {reviews.map((r) => (
+          <div
+            key={r.id}
+            className="bg-[#1a1a1a] p-4 sm:p-5 rounded-xl text-left shadow-md border border-red-600/30 hover:border-red-500/60 transition"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="font-semibold text-red-400">{r.name}</h3>
+              <div className="text-red-500 text-sm sm:text-base">
+                {"★".repeat(r.rating)}{" "}
+                <span className="text-gray-700">
+                  {"★".repeat(5 - r.rating)}
+                </span>
+              </div>
+            </div>
+            <p className="text-gray-300 mb-3 text-sm sm:text-base">{r.comment}</p>
+
+            <div className="flex gap-3 text-xs sm:text-sm">
+              <button
+                type="button"
+                onClick={() => handleEdit(r)}
+                className="text-blue-400 hover:text-blue-300 transition hover:cursor-pointer"
+              >
+                ✏️ Editar
+              </button>
+              <button
+                onClick={() => handleDelete(r.id)}
+                className="text-red-400 hover:text-red-300 transition hover:cursor-pointer"
+              >
+                🗑️ Excluir
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+</section>
+
   );
 }
 

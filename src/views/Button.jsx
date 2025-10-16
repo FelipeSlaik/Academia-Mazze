@@ -6,7 +6,7 @@ function Button({ text, color, href }) {
 
   const colorClass = colors[color] || colors["teal-black"];
 
-  // Se houver href, renderiza <a>
+  
   if (href) {
     return (
       <a
@@ -20,7 +20,7 @@ function Button({ text, color, href }) {
     );
   }
 
-  // Caso contrário, renderiza <button>
+ 
   return (
     <button
       className={`${colorClass} px-6 py-2 font-bold rounded-lg cursor-pointer transition-colors duration-300`}

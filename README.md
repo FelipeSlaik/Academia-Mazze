@@ -1,16 +1,53 @@
-# React + Vite
+# Academia Mazze - Landing Page e Sistema de Avaliações
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Landing page responsiva da **Academia Mazze**, localizada em São Roque/SP, com funcionalidades interativas, mapa de localização e sistema de avaliações integrado.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tecnologias Utilizadas
 
-## React Compiler
+- **Front-end:** React, Tailwind CSS, Hero Icons  
+- **Back-end:** Node.js, Express  
+- **Banco de dados:** Arquivo JSON (`reviews.json`)  
+- **Outros:** CORS, Body-Parser  
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Funcionalidades
+
+- Landing page responsiva com seções: Home, Serviços, Avaliações e Localização  
+- Sistema de avaliações: CRUD completo (criar, ler, atualizar, deletar)  
+- Botões de CTA integrados com WhatsApp  
+- Mapa interativo com localização da academia  
+- Footer com links para Facebook, Instagram e informações de contato  
+
+---
+
+## Como Rodar o Projeto
+
+### 1. Clonar o repositório
+```bash
+git clone <seu-repo-url>
+cd academia-mazze
+
+*Instalar dependências*
+npm install
+
+*Rodar o servidor e front-end*
+npm start
+
+O npm start roda React e Express juntos.
+O front-end fica em http://localhost:3000 e a API de avaliações em http://localhost:5000/api/reviews.
+
+*Exemplo de payload para POST/PUT:*
+{
+  "name": "João",
+  "comment": "Treino excelente!",
+  "rating": 5
+}
+
+
+
+
+
