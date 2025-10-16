@@ -8,7 +8,8 @@ function Reviews() {
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState(null);
 
-  const API_URL = "http://localhost:5000/api/reviews";
+  const API_URL = import.meta.env.VITE_API_URL;
+  
 
   useEffect(() => {
     fetch(API_URL)
@@ -85,7 +86,7 @@ function Reviews() {
       Veja o que nossos alunos estão dizendo e compartilhe sua experiência!
     </p>
 
-    <form className="bg-[#1a1a1a] p-4 sm:p-6 rounded-xl shadow-lg border border-red-600/30 mb-6 sm:mb-10">
+    <form onSubmit={handleSubmit} className="bg-[#1a1a1a] p-4 sm:p-6 rounded-xl shadow-lg border border-red-600/30 mb-6 sm:mb-10">
       <div className="flex justify-center mb-4 gap-1 sm:gap-2">
         {[1, 2, 3, 4, 5].map((value) => (
           <button
