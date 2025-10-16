@@ -8,23 +8,22 @@ import Location from "./views/Location.jsx";
 import Footer from "./Components/Shared/Footer.jsx";
 
 function App() {
-  
   const homeRef = useRef(null);
   const featuresRef = useRef(null);
   const locationRef = useRef(null);
 
-  const scrollToHome = () => homeRef.current?.scrollIntoView({ behavior: "smooth" });
-  const scrollToFeatures = () => featuresRef.current?.scrollIntoView({ behavior: "smooth" });
-  const scrollToLocation = () => locationRef.current?.scrollIntoView({ behavior: "smooth" });
+  const scrollToHome = () =>
+    homeRef.current?.scrollIntoView({ behavior: "smooth" });
+  const scrollToFeatures = () =>
+    featuresRef.current?.scrollIntoView({ behavior: "smooth" });
+  const scrollToLocation = () =>
+    locationRef.current?.scrollIntoView({ behavior: "smooth" });
 
   return (
     <div className="scroll-smooth">
-      
       <div className="relative min-h-screen bg-[url('./assets/home-bg.png')] bg-cover bg-center bg-fixed">
-       
         <div className="absolute inset-0 bg-black/75 z-10"></div>
 
-        
         <div className="absolute top-0 left-0 w-full z-20">
           <Cabecalho
             scrollToHome={scrollToHome}
@@ -33,7 +32,6 @@ function App() {
           />
         </div>
 
-        
         <div ref={homeRef} className="relative z-10 pt-24">
           <Home />
         </div>
@@ -47,9 +45,6 @@ function App() {
 
       <div ref={locationRef}>
         <Location />
-      </div>
-      <div>
-        
       </div>
       <Footer />
     </div>

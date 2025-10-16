@@ -1,4 +1,9 @@
-import { UserGroupIcon, ClockIcon, FireIcon, StarIcon } from "@heroicons/react/16/solid";
+import {
+  UserGroupIcon,
+  ClockIcon,
+  FireIcon,
+  StarIcon,
+} from "@heroicons/react/16/solid";
 
 function Features() {
   const features = [
@@ -44,8 +49,12 @@ function Features() {
               className="bg-white p-6 rounded-xl shadow-red-800 hover:shadow-lg transition text-center flex flex-col items-center cursor-pointer"
             >
               <Icon className="w-12 sm:w-16 h-12 sm:h-16 text-red-700 mb-4" />
-              <h3 className="text-lg sm:text-xl font-bold mb-2">{feature.title}</h3>
-              <p className="text-gray-600 text-sm sm:text-base">{feature.description}</p>
+              <h3 className="text-lg sm:text-xl font-bold mb-2">
+                {feature.title}
+              </h3>
+              <p className="text-gray-600 text-sm sm:text-base">
+                {feature.description}
+              </p>
             </div>
           );
         })}

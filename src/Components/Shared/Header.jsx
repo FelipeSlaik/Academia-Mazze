@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "../../views/Button";
 import { HiMenu, HiX } from "react-icons/hi";
-import logo from "../assets/logo.png";
+import logo from "../../assets/logo.png";
 
 
 function Cabecalho({ scrollToHome, scrollToFeatures, scrollToLocation }) {
@@ -9,9 +9,7 @@ function Cabecalho({ scrollToHome, scrollToFeatures, scrollToLocation }) {
 
   return (
     <header className="w-full z-20 px-6 py-4 flex flex-col md:flex-row justify-between items-center bg-transparent">
-      
       <div className="w-full flex justify-between items-center">
-        
         <a
           href="#"
           className="flex items-center text-4xl font-bold bg-sky-50 rounded-2xl"
@@ -23,20 +21,27 @@ function Cabecalho({ scrollToHome, scrollToFeatures, scrollToLocation }) {
           />
         </a>
 
-
         <nav className="hidden md:flex gap-8 text-2xl font-medium text-red-600">
-          <button onClick={scrollToHome} className="hover:text-red-700 font-bold">
+          <button
+            onClick={scrollToHome}
+            className="hover:text-red-700 font-bold"
+          >
             Home
           </button>
-          <button onClick={scrollToFeatures} className="hover:text-red-700 font-bold">
+          <button
+            onClick={scrollToFeatures}
+            className="hover:text-red-700 font-bold"
+          >
             Serviços
           </button>
-          <button onClick={scrollToLocation} className="hover:text-red-700 font-bold">
+          <button
+            onClick={scrollToLocation}
+            className="hover:text-red-700 font-bold"
+          >
             Localização
           </button>
         </nav>
 
-        {/* WhatsApp button desktop */}
         <div className="hidden md:block">
           <Button
             text="Agende!"
@@ -45,7 +50,6 @@ function Cabecalho({ scrollToHome, scrollToFeatures, scrollToLocation }) {
           />
         </div>
 
-        {/* Hamburger mobile */}
         <div className="md:hidden">
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -56,23 +60,31 @@ function Cabecalho({ scrollToHome, scrollToFeatures, scrollToLocation }) {
         </div>
       </div>
 
-      {/* Menu mobile (empurra conteúdo) */}
       {menuOpen && (
         <div className="w-full flex flex-col items-center gap-6 mt-4 md:hidden bg-gray-900 text-white py-6 rounded-xl">
           <button
-            onClick={() => { scrollToHome(); setMenuOpen(false); }}
+            onClick={() => {
+              scrollToHome();
+              setMenuOpen(false);
+            }}
             className="text-xl font-bold hover:text-red-400"
           >
             Home
           </button>
           <button
-            onClick={() => { scrollToFeatures(); setMenuOpen(false); }}
+            onClick={() => {
+              scrollToFeatures();
+              setMenuOpen(false);
+            }}
             className="text-xl font-bold hover:text-red-400"
           >
             Serviços
           </button>
           <button
-            onClick={() => { scrollToLocation(); setMenuOpen(false); }}
+            onClick={() => {
+              scrollToLocation();
+              setMenuOpen(false);
+            }}
             className="text-xl font-bold hover:text-red-400"
           >
             Localização
