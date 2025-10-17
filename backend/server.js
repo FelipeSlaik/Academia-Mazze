@@ -67,63 +67,6 @@ app.post("/api/reviews", (req, res) => {
   });
 });
 
-app.put("/api/reviews/:id", (req, res) => {
-  const reviewId = parseInt(req.params.id);
-  const { name, comment, rating } = req.body;
-
-  ensureFileExists();
-
-  fs.readFile(FILE_PATH, (err, data) => {
-    if (err) return res.status(500).json({ error: "Erro ao ler arquivo" });
-
-    let reviews = [];
-    try {
-      reviews = JSON.parse(data);
-    } catch {
-      return res.status(500).json({ error: "Erro ao parsear JSON" });
-    }
-
-    const index = reviews.findIndex((r) => Number(r.id) === reviewId);
-    if (index === -1)
-      return res.status(404).json({ error: "Review não encontrado" });
-
-    reviews[index] = { ...reviews[index], name, comment, rating };
-
-    fs.writeFile(FILE_PATH, JSON.stringify(reviews, null, 2), (err) => {
-      if (err)
-        return res.status(500).json({ error: "Erro ao atualizar review" });
-      res.json(reviews[index]);
-    });
-  });
-});
-
-app.delete("/api/reviews/:id", (req, res) => {
-  const reviewId = parseInt(req.params.id);
-
-  ensureFileExists();
-
-  fs.readFile(FILE_PATH, (err, data) => {
-    if (err) return res.status(500).json({ error: "Erro ao ler arquivo" });
-
-    let reviews = [];
-    try {
-      reviews = JSON.parse(data);
-    } catch {
-      return res.status(500).json({ error: "Erro ao parsear JSON" });
-    }
-
-    const filtered = reviews.filter((r) => Number(r.id) !== reviewId);
-
-    if (filtered.length === reviews.length)
-      return res.status(404).json({ error: "Review não encontrado" });
-
-    fs.writeFile(FILE_PATH, JSON.stringify(filtered, null, 2), (err) => {
-      if (err) return res.status(500).json({ error: "Erro ao excluir review" });
-      res.status(200).json({ message: "Review excluído com sucesso" });
-    });
-  });
-});
-
 app.listen(PORT, () =>
   console.log(`✅ Servidor rodando em http://localhost:${PORT}`)
 );

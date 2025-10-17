@@ -61,20 +61,6 @@ function Reviews() {
     }
   };
 
-  const handleEdit = (review) => {
-    setEditingId(review.id);
-    setName(review.name);
-    setComment(review.comment);
-    setRating(review.rating);
-  };
-
-  const handleDelete = async (id) => {
-    const res = await fetch(`${API_URL}/${id}`, { method: "DELETE" });
-    if (res.ok) {
-      setReviews(reviews.filter((r) => r.id !== id));
-    }
-  };
-
   return (
     <section className="bg-[#0f0f0f] text-white py-16 px-4 sm:px-6">
       <div className="max-w-3xl mx-auto text-center">
@@ -171,21 +157,7 @@ function Reviews() {
                   {r.comment}
                 </p>
 
-                <div className="flex gap-3 text-xs sm:text-sm">
-                  <button
-                    type="button"
-                    onClick={() => handleEdit(r)}
-                    className="text-blue-400 hover:text-blue-300 transition hover:cursor-pointer"
-                  >
-                    ✏️ Editar
-                  </button>
-                  <button
-                    onClick={() => handleDelete(r.id)}
-                    className="text-red-400 hover:text-red-300 transition hover:cursor-pointer"
-                  >
-                    🗑️ Excluir
-                  </button>
-                </div>
+                
               </div>
             ))}
           </div>
